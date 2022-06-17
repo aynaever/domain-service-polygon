@@ -15,7 +15,7 @@ contract Domains {
 	}
 
 	function register(string calldata _name) public {
-		require(domains[_name] == adress(0));
+		require(domains[_name] == address(0));
 		domains[_name] = msg.sender;
 		console.log("%s has registered a domain!", _name);
 	}
@@ -29,7 +29,7 @@ contract Domains {
 		records[_name] = _record;
 	}
 
-	function getRecord(string calldata _name) public view returns (string) {
+	function getRecord(string calldata _name) public view returns (string memory) {
 		return records[_name];
 	}
 }

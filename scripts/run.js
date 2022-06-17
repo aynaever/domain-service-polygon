@@ -9,11 +9,14 @@ async function main() {
 	console.log("Domains deployed to:", domains.address);
 	console.log("Contract deployed by:", owner.address);
 
-	const txn = await domains.register("crazystuff");
+	let txn = await domains.register("crazystuff");
 	await txn.wait();
 
 	const domainOwner = await domains.getAddress("crazystuff");
 	console.log("Domain Owner : ", domainOwner);
+
+	txn = await domains.connect(randomUser).setRecord("crazystuff", "you are amazing!");
+  await txn.wait();
 
 }
 
